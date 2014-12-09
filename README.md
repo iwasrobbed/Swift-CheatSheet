@@ -2,11 +2,10 @@
 
 This is not meant to be a beginner's guide or a detailed discussion about Swift; it is meant to be a quick reference to common, high level topics.
 
-* Read my [Objective-C](https://github.com/iwasrobbed/Objective-C-CheatSheet) cheatsheet as well.
-* Support this project via Gratipay <a href="https://gratipay.com/iwasrobbed/"><img src="http://img.shields.io/gratipay/iwasrobbed.svg"></a>
+* Read the [Objective-C](https://github.com/iwasrobbed/Objective-C-CheatSheet) cheatsheet as well.
 * To download a PDF version of this, use [GitPrint.com](https://gitprint.com/iwasrobbed/Swift-CheatSheet/blob/master/README.md?download)
 
-**Note**: I wrote this fairly quickly, mostly to teach myself Swift, so it still needs a lot of love and there are important sections still missing. Please feel free to edit this document to update or improve upon it, making sure to keep with the general formatting of the document.  The list of contributors can be [found here](https://github.com/iwasrobbed/Swift-CheatSheet/graphs/contributors).
+**Note**: This was written this fairly quickly, mostly to teach myself Swift, so it still needs a lot of love and there are important sections still missing. Please feel free to edit this document to update or improve upon it, making sure to keep with the general formatting of the document.  The list of contributors can be [found here](https://github.com/iwasrobbed/Swift-CheatSheet/graphs/contributors).
 
 If something isn't mentioned here, it's probably covered in detail in one of these:
 
