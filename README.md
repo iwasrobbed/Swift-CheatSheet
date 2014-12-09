@@ -16,6 +16,7 @@ If something isn't mentioned here, it's probably covered in detail in one of the
 * [Apple: Using Swift with Objective-C and Cocoa](https://developer.apple.com/library/ios/documentation/swift/conceptual/buildingcocoaapps/index.html)
 * [objc.io](http://www.objc.io)
 * [NSHipster](http://nshipster.com)
+* [Functional Programming in Swift](http://www.objc.io/books/)
 
 ### Table of Contents
 
