@@ -1156,7 +1156,7 @@ If you need to cast to a certain object type, see the earlier discussion about t
 #### While Loop
 
 ```swift
-while someTextCondition {
+while someTestCondition {
    // Code to execute while the condition is true
 }
 ```
