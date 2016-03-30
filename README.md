@@ -282,10 +282,10 @@ Checking object type using `is`:
 
 ```swift
 if item is Movie {
-    ++movieCount
+    movieCount += 1
     println("It is a movie.")
 } else if item is Song {
-    ++songCount
+    songCount += 1
     println("It is a song.")
 }
 
@@ -407,16 +407,6 @@ Operator | Purpose
 &&= | Logical AND
 &#124;&#124;= | Logical OR
 
-#### Increment and Decrement Operators
-
-Operator | Purpose
-:---: | ---
-++ | Addition
--- | Subtraction
-
-- If the operator is written before the variable, it increments the variable *before* returning its value.
-- If the operator is written after the variable, it increments the variable *after* returning its value.
-
 #### Logical Operators
 
 Operator | Purpose
@@ -495,7 +485,7 @@ Swift allows you to overwrite existing operators or define new operators for exi
 Operator overloading is limited to the following symbols, `/ = - + * % < > ! & | ^ . ~`, however you cannot overload the `=` operator by itself (it must be combined with another symbol).
 
 Operators can be specified as:
-* `prefix`: goes before an object such as `++movieCount`
+* `prefix`: goes before an object such as `-negativeNumber`
 * `infix`: goes between two objects, such as `a + b`
 * `postfix`: goes after an object, such as `unwrapMe!`
 
@@ -930,7 +920,7 @@ var value: String = "" {
         println("About to set value...")
     }
     didSet {
-        numberOfEdits++
+        numberOfEdits += 1
     }
 }
 ```
