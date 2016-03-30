@@ -91,41 +91,41 @@ In fact, Swift just aliases C types to a Swift equivalent:
 // C char is aliased as an Int8 and unsigned as UInt8
 let aChar = CChar()
 let anUnsignedChar = CUnsignedChar()
-println("C char size: \(sizeofValue(aChar)) with min: \(Int8.min) and max: \(Int8.max)")
+print("C char size: \(sizeofValue(aChar)) with min: \(Int8.min) and max: \(Int8.max)")
 // C char size: 1 with min: -128 and max: 127
-println("C unsigned char size: \(sizeofValue(anUnsignedChar)) with min: \(UInt8.min) and max: \(UInt8.max)")
+print("C unsigned char size: \(sizeofValue(anUnsignedChar)) with min: \(UInt8.min) and max: \(UInt8.max)")
 // C unsigned char size: 1 with min: 0 and max: 255
 
 // C short is aliased as an Int16 and unsigned as UInt16
 let aShort = CShort()
 let unsignedShort = CUnsignedShort()
-println("C short size: \(sizeofValue(aShort)) with min: \(Int16.min) and max: \(Int16.max)")
+print("C short size: \(sizeofValue(aShort)) with min: \(Int16.min) and max: \(Int16.max)")
 // C short size: 2 with min: -32768 and max: 32767
-println("C unsigned short size: \(sizeofValue(unsignedShort)) with min: \(UInt16.min) and max: \(UInt16.max)")
+print("C unsigned short size: \(sizeofValue(unsignedShort)) with min: \(UInt16.min) and max: \(UInt16.max)")
 // C unsigned short size: 2 with min: 0 and max: 65535
 
 // C int is aliased as an Int32 and unsigned as UInt32
 let anInt = CInt()
 let unsignedInt = CUnsignedInt()
-println("C int size: \(sizeofValue(anInt)) with min: \(Int32.min) and max: \(Int32.max)")
+print("C int size: \(sizeofValue(anInt)) with min: \(Int32.min) and max: \(Int32.max)")
 // C int size: 4 with min: -2147483648 and max: 2147483647
-println("C unsigned int size: \(sizeofValue(unsignedInt)) with min: \(UInt32.min) and max: \(UInt32.max)")
+print("C unsigned int size: \(sizeofValue(unsignedInt)) with min: \(UInt32.min) and max: \(UInt32.max)")
 // C unsigned int size: 4 with min: 0 and max: 4294967295
 
 // C long is aliased as an Int and unsigned as UInt
 let aLong = CLong()
 let unsignedLong = CUnsignedLong()
-println("C long size: \(sizeofValue(aLong)) with min: \(Int.min) and max: \(Int.max)")
+print("C long size: \(sizeofValue(aLong)) with min: \(Int.min) and max: \(Int.max)")
 // C long size: 8 with min: -9223372036854775808 and max: 9223372036854775807
-println("C unsigned long size: \(sizeofValue(unsignedLong)) with min: \(UInt.min) and max: \(UInt.max)")
+print("C unsigned long size: \(sizeofValue(unsignedLong)) with min: \(UInt.min) and max: \(UInt.max)")
 // C unsigned long size: 8 with min: 0 and max: 18446744073709551615
 
 // C long long is aliased as an Int64 and unsigned as UInt64
 let aLongLong = CLongLong()
 let unsignedLongLong = CUnsignedLongLong()
-println("C long long size: \(sizeofValue(aLongLong)) with min: \(Int64.min) and max: \(Int64.max)")
+print("C long long size: \(sizeofValue(aLongLong)) with min: \(Int64.min) and max: \(Int64.max)")
 // C long long size: 8 with min: -9223372036854775808 and max: 9223372036854775807
-println("C unsigned long long size: \(sizeofValue(unsignedLongLong)) with min: \(UInt64.min) and max: \(UInt64.max)")
+print("C unsigned long long size: \(sizeofValue(unsignedLongLong)) with min: \(UInt64.min) and max: \(UInt64.max)")
 // C unsigned long long size: 8 with min: 0 and max: 18446744073709551615
 ```
 
@@ -191,12 +191,12 @@ Floats cannot be signed or unsigned.
 ```swift
 // Single precision (32-bit) floating-point. Use it when floating-point values do not require 64-bit precision.
 let aFloat = Float()
-println("Float size: \(sizeofValue(aFloat))")
+print("Float size: \(sizeofValue(aFloat))")
 // Float size: 4
 
 // Double precision (64-bit) floating-point. Use it when floating-point values must be very large or particularly precise.
 let aDouble = Double()
-println("Double size: \(sizeofValue(aDouble))")
+print("Double size: \(sizeofValue(aDouble))")
 // Double size: 8
 ```
 
@@ -262,7 +262,7 @@ Then you'd be able to do comparisons like so:
 let firstOption = ExampleOptions.OptionOne
 let multipleOptions: ExampleOptions = firstOption | .OptionTwo
 if (multipleOptions & .OptionTwo != nil) { // see note below
-    println("multipleOptions has OptionTwo")
+    print("multipleOptions has OptionTwo")
 }
 ```
 
@@ -283,10 +283,10 @@ Checking object type using `is`:
 ```swift
 if item is Movie {
     movieCount += 1
-    println("It is a movie.")
+    print("It is a movie.")
 } else if item is Song {
     songCount += 1
-    println("It is a song.")
+    print("It is a song.")
 }
 
 ```
@@ -300,9 +300,9 @@ If you want to be able to easily access the data during one of these checks, you
 ```swift
 for item in library {
     if let movie = item as? Movie {
-        println("Director: \(movie.director)")
+        print("Director: \(movie.director)")
     } else if let song = item as? Song {
-        println("Artist: \(song.artist)")
+        print("Artist: \(song.artist)")
     }
 }
 ```
@@ -329,15 +329,15 @@ var things = [Any]()
 for thing in things {
     switch thing {
     case 0 as Int:
-        println("Zero as an Int")
+        print("Zero as an Int")
     case let someString as String:
-        println("S string value of \"\(someString)\"")
+        print("S string value of \"\(someString)\"")
     case let (x, y) as (Double, Double):
-        println("An (x, y) point at \(x), \(y)")
+        print("An (x, y) point at \(x), \(y)")
     case let movie as Movie:
-        println("A movie called '\(movie.name)' by director \(movie.director)")
+        print("A movie called '\(movie.name)' by director \(movie.director)")
     default:
-        println("Didn't match any of the cases specified")
+        print("Didn't match any of the cases specified")
     }
 }
 ```
@@ -551,7 +551,7 @@ class MyClass {
     // MARK: - Class Methods, e.g. MyClass.functionName()
 
     class func alert() {
-        println("This is a class function.")
+        print("This is a class function.")
     }
 
     // MARK: - Instance Methods, e.g. myClass.functionName()
@@ -690,7 +690,7 @@ Special characters can be included:
 
 ```swift
 let example = [ "hi", "there", 23, true ]
-println("item at index 0: \(example[0])")
+print("item at index 0: \(example[0])")
 ```
 
 #### Dictionary Access Syntax
@@ -698,7 +698,7 @@ println("item at index 0: \(example[0])")
 ```swift
 let example = [ "hi" : "there", "iOS" : "people" ]
 if let value = example["hi"] {
-    println("hi \(value)")
+    print("hi \(value)")
 }
 ```
 
@@ -764,8 +764,8 @@ func sayHelloToMyLilFriend(lilFriendsName: String) -> (msg: String, nameLength: 
 }
 
 var hello = sayHelloToMyLilFriend("Rob")
-println(hello.msg) // "Oh hello, Rob. Cup of tea?"
-println(hello.nameLength) // 3
+print(hello.msg) // "Oh hello, Rob. Cup of tea?"
+print(hello.nameLength) // 3
 ```
 
 And those multiple return values can be optional:
@@ -899,11 +899,11 @@ You can overrride the getter and setter of a property to create computed propert
 // Example of computed property
 var x: Int {
     get {
-        println("Accessing x...")
+        print("Accessing x...")
         return self.x
     }
     set {
-        println("Setting x...")
+        print("Setting x...")
         self.x = newValue
     }
 }
@@ -917,7 +917,7 @@ Swift also has callbacks for when a property will be or was set using `willSet` 
 var numberOfEdits = 0
 var value: String = "" {
     willSet {
-        println("About to set value...")
+        print("About to set value...")
     }
     didSet {
         numberOfEdits += 1
@@ -1099,7 +1099,7 @@ Swift enables you to use ranges inside of `for` loops now:
 
 ```swift
 for index in 1...5 {
-    println("\(index) times 5 is \(index * 5)")
+    print("\(index) times 5 is \(index * 5)")
 }
 
 // Or if you don't need the value of the index
@@ -1108,7 +1108,7 @@ var answer = 1
 for _ in 1...power {
     answer *= base
 }
-println("\(base) to the power of \(power) is \(answer)")
+print("\(base) to the power of \(power) is \(answer)")
 // prints "3 to the power of 10 is 59049"
 ```
 
@@ -1124,13 +1124,13 @@ for movie in someObjects as [Movie] {
 // Enumerating simple array
 let names = ["Anna", "Alex", "Brian", "Jack"]
 for name in names {
-    println("Hello, \(name)!")
+    print("Hello, \(name)!")
 }
 
 // Enumerating simple dictionary
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
-    println("\(animalName)s have \(legCount) legs")
+    print("\(animalName)s have \(legCount) legs")
 }
 ```
 
@@ -1251,7 +1251,7 @@ class MyClass {
 ```swift
 let myClass = MyClass.sharedInstance
 myClass.doSomething()
-println("Attribute value is \(myClass.someVariableOrConstant)")
+print("Attribute value is \(myClass.someVariableOrConstant)")
 ```
 
 [Back to top](#swift-cheat-sheet)
