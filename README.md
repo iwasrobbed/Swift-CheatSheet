@@ -1122,13 +1122,6 @@ println("\(base) to the power of \(power) is \(answer)")
 // prints "3 to the power of 10 is 59049"
 ```
 
-Or you can use more traditional loops:
-
-```swift
-for var index = 0; index < 5; ++index {
-    println("index is \(index)")
-}
-```
 
 #### Enumerating arrays & dictionaries
 
