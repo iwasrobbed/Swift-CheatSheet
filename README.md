@@ -404,8 +404,6 @@ Operator | Purpose
 ^= | Exclusive OR
 <<= | Shift Left
 >>= | Shift Right
-&&= | Logical AND
-&#124;&#124;= | Logical OR
 
 #### Logical Operators
 
