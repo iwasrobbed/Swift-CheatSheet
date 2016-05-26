@@ -1144,10 +1144,10 @@ while someTestCondition {
 }
 ```
 
-#### Do While Loop
+#### Repeat While Loop
 
 ```swift
-do {
+repeat {
     // Code to execute while the condition is true
 } while someTestCondition
 ```
