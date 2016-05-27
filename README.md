@@ -1205,10 +1205,7 @@ User defaults are basically a way of storing simple preference values which can 
 ```swift
 let userDefaults = NSUserDefaults.standardUserDefaults()
 userDefaults.setValue("Some Value", forKey: "RPSomeUserPreference")
-userDefaults.synchronize()
 ```
-
-Always remember to call `synchronize` on the defaults instance to ensure they are saved properly.
 
 ### Retrieving Values
 
