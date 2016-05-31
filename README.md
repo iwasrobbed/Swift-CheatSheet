@@ -1234,8 +1234,18 @@ class MyClass {
   class var sharedInstance: MyClass {
     return _singletonInstance
   }
-
+  private init() {} //This prevents others from using the default '()' initializer for this class.
   // More class code here
+}
+```
+Alternatively (source: http://krakendev.io/blog/the-right-way-to-write-a-singleton)
+
+```swift
+class MyClass {
+static let sharedInstance = MyClass()
+private init() {} //This prevents others from using the default '()' initializer for this class.
+
+// More class code here
 }
 ```
 
