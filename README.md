@@ -361,7 +361,7 @@ let aString: String = String(anInt)
 
 Swift supports most standard C operators and improves several capabilities to eliminate common coding errors. The assignment operator `=` does not return a value, to prevent it from being mistakenly used when the equal to operator `==` is intended.
 
-Arithmetic operators (`+`, `-`, `*`, `/`, `%` and so forth) detect and disallow value overflow, to avoid unexpected results when working with numbers that become larger or smaller than the allowed value range of the type that stores them.
+Arithmetic operators (`+`, `-`, `*`, `/`, `%`) detect and disallow value overflow, to avoid unexpected results when working with numbers that become larger or smaller than the allowed value range of the type that stores them.
 
 #### Arithmetic Operators
 
