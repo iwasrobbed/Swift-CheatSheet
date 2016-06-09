@@ -207,7 +207,7 @@ print("Double size: \(sizeofValue(aDouble))")
 let isBool: Bool = true // Or false
 ```
 
-In Objective-C comparative statements, `0` and `nil` were considered `false` and any non-zero/non-nil values were considered `true`. However, this is not the case in Swift. Instead, those objects must conform to the `BooleanType` protocol to be able to compare this way, and you'll need to directly check their value such as `if (x == 0)` or `if (object != nil)`
+In Objective-C comparative statements, `0` and `nil` were considered `false` and any non-zero/non-nil values were considered `true`. However, this is not the case in Swift. Instead, those objects must conform to the `BooleanType` protocol to be able to compare this way, and you'll need to directly check their value such as `if x == 0` or `if object != nil`
 
 #### Primitives
 
