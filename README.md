@@ -1053,6 +1053,37 @@ func makeIncrementor(forIncrement amount: Int) -> () -> Int {
 
 Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate a variable to say that they can be used within the nested function. Swift also handles all memory management involved in disposing of variables when they are no longer needed by the function.
 
+#### Capturing Self
+
+if you create a closure that references `self.*` it will capture `self` retain a strong reference to it. This is sometimes the intended behavour, but often leads to unnessecary retain references.
+
+The two best options are to use `unowned` or `weak`. The might look a bit messy, but save alot of headache.
+
+Use `unowned` when you know the closure will only be called if `self` still exists, but you don't want to create a retain reference.
+
+Use `weak` if there is a chance that `self` will not exists, or if the closure is not dependent upon `self` and will run without it. If you do use `weak` also remember that `self` will be an optional variable and should be checked for existance.
+
+```swift
+struct SomeStructure {
+    private var value = ""
+    init() {
+        closure { value in                  // Retained self
+            self.currentValue = value
+        }
+
+        closure { [unowned self] value in   // Not retained, but expected to exist
+            self.currentValue = value
+        }
+
+        closure { [weak self] value in      // Not retained, not expected to exist
+            self?.currentValue = value
+        }
+    }
+}
+```
+
+Reference: [Apple: Automatic Reference Counting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
+
 [Back to top](#swift-cheat-sheet)
 
 ## Generics
