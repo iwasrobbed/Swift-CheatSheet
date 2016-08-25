@@ -707,9 +707,6 @@ var musicGenres: Set<String> = ["Indie", "Pop", "Folk", "Electronica"]
 musicGenres.remove("Indie")
 musicGenres.insert("Rock")
 print("I have a list of \(musicGenres.count) music genres")
-for genre in musicGenres {
-    print("\(genre)")
-}
 ```
 
 #### Dictionary access syntax
@@ -721,10 +718,9 @@ airlines["PA"] = nil        // removing an item
 if let airlineName = airlines["BA"] {
     print("Fly with \(airlineName)")
 }
-for airlineCode in airlines.keys {    // iterate over all items
-    print("Code \(airlineCode) -> \(airlines[airlineCode])")
-}
 ```
+
+See also Iterating over Arrays and Dictionaries below.
 
 #### Mutability
 
