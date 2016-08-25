@@ -665,8 +665,9 @@ Syntax | What it does
 `28` | Returns an `Int`
 `3.14`, `0xFp2`, `1.25e2` | Returns a `Float` object
 `true`, `false` | Returns a `Bool` object
-`[]` | Returns an `Array` object
-`[keyName:value]` | Returns a `Dictionary` object
+`[]` | Returns an `Array` object 
+`Set<> | Returns a `Set` object (a hashable array with no ordering)
+`[key:value]` | Returns a `Dictionary` object (arrays with no ordering, looking up values through keys)
 `0b` | Returns a binary digit
 `0o` | Returns an octal digit
 `0x` | Returns a hexadecimal digit
@@ -684,14 +685,32 @@ Special characters can be included:
 * Single Quote: `\'`
 * Unicode scalar: `\u{n}` where n is between one and eight hexadecimal digits
 
-#### Array Access Syntax
+#### Array access syntax
 
 ```swift
+// single item access
 let example = [ "hi", "there", 23, true ]
 print("item at index 0: \(example[0])")
+
+// range access
+var fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 5]
+fibonacci[5..8] // [5, 8, 13]. Note: the end range value is excluded
+fibonacci[0..fibonacci.endIndex] // all except last item
+
+// iterating
+for term in fibonacci { print (term) }
+```
+#### Set access syntax
+
+``` swift
+var musicGenres: Set<String> = ["Indie", "Pop", "Folk", "Electronica"]
+musicGenres.remove("Indie")
+musicGenres.insert("Rock")
+print("I have a list of \(musicGenres.count) music genres")
+for genre in musicGenres { print("\(genre)") }
 ```
 
-#### Dictionary Access Syntax
+#### Dictionary access syntax
 
 ```swift
 let example = [ "hi" : "there", "iOS" : "people" ]
@@ -909,7 +928,7 @@ var x: Int {
 
 #### Access Callbacks
 
-Swift also has callbacks for when a property will be or was set using `willSet` and `didSet` shown below:
+Swift also has callbacks (or 'observers') for when a property will be or was set using `willSet` and `didSet` shown below:
 
 ```swift
 var numberOfEdits = 0
