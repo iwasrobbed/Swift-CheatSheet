@@ -707,15 +707,22 @@ var musicGenres: Set<String> = ["Indie", "Pop", "Folk", "Electronica"]
 musicGenres.remove("Indie")
 musicGenres.insert("Rock")
 print("I have a list of \(musicGenres.count) music genres")
-for genre in musicGenres { print("\(genre)") }
+for genre in musicGenres {
+    print("\(genre)")
+}
 ```
 
 #### Dictionary access syntax
 
 ```swift
-let example = [ "hi" : "there", "iOS" : "people" ]
-if let value = example["hi"] {
-    print("hi \(value)")
+let airlines = [ "BA" : "British Airways", "AA" : "American Airlines" ]
+airlines["PA"] = "Pan Am"   // adding a new item
+airlines["PA"] = nil        // removing an item
+if let airlineName = airlines["BA"] {
+    print("Fly with \(airlineName)")
+}
+for airlineCode in airlines.keys {    // iterate over all items
+    print("Code \(airlineCode) -> \(airlines[airlineCode])")
 }
 ```
 
