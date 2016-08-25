@@ -666,7 +666,7 @@ Syntax | What it does
 `3.14`, `0xFp2`, `1.25e2` | Returns a `Float` object
 `true`, `false` | Returns a `Bool` object
 `[]` | Returns an `Array` object 
-`Set<> | Returns a `Set` object (a hashable array with no ordering)
+`Set<>` | Returns a `Set` object (a hashable array with no ordering)
 `[key:value]` | Returns a `Dictionary` object (arrays with no ordering, looking up values through keys)
 `0b` | Returns a binary digit
 `0o` | Returns an octal digit
@@ -684,6 +684,8 @@ Special characters can be included:
 * Double Quote: `\"`
 * Single Quote: `\'`
 * Unicode scalar: `\u{n}` where n is between one and eight hexadecimal digits
+
+The built-in methods and accessors for Strings are different in Swift 1.x, 2.1+, and 3.0, and so are not covered here.
 
 #### Array access syntax
 
