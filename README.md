@@ -1191,7 +1191,7 @@ switch errorStatusCode {
 }
 ```
 
-Switch statements in Swift do not fall through the bottom of each case and into the next one by default. Instead, the entire switch statement finishes its execution as soon as the first matching switch case is completed, without requiring an explicit `break` statement. This makes the switch statement safer and easier to use than in C, and avoids executing more than one switch case by mistake.
+Switch statements in Swift do not fall through the bottom of each case and into the next one by default (unless you make that happen using the `fallthrough` statement). Instead, the entire switch statement finishes its execution as soon as the first matching switch case is completed, without requiring an explicit `break` statement. This makes the switch statement safer and easier to use than in C, and avoids executing more than one switch case by mistake.
 
 #### Exiting Loops
 
@@ -1210,7 +1210,18 @@ Coming soon...
 
 ## Error Handling
 
-Coming soon...
+Errors can be handled by either
+
+* guard-throw control statements
+* do-catch control statements
+* 
+
+```func vend() throws -> String
+	guard item.count > 0 else {
+		throw VendingMachineError.outOfStock
+	}
+}```
+
 
 [Back to top](#swift-cheat-sheet)
 
