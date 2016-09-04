@@ -1216,11 +1216,13 @@ Errors can be handled by either
 * do-catch control statements
 * 
 
-```func vend() throws -> String
+```switch
+func vend() throws -> String
 	guard item.count > 0 else {
 		throw VendingMachineError.outOfStock
 	}
-}```
+}
+```
 
 
 [Back to top](#swift-cheat-sheet)
