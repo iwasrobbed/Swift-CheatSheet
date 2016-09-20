@@ -1,11 +1,10 @@
-## Swift 2.3 and below Cheat Sheet
+## Swift 3+ Cheat Sheet
 
-Want to help bring this up to Swift 3.0 standards? File an issue or open a pull request! :) 
+Want to help improve this? File an issue or open a pull request! :) 
 
 This is not meant to be a beginner's guide or a detailed discussion about Swift; it is meant to be a quick reference to common, high level topics.
 
 * Read the [Objective-C](https://github.com/iwasrobbed/Objective-C-CheatSheet) cheatsheet as well.
-* To download a PDF version of this, use [GitPrint.com](https://gitprint.com/iwasrobbed/Swift-CheatSheet/blob/master/README.md?download)
 
 **Note**: This was written this fairly quickly, mostly to teach myself Swift, so it still needs a lot of love and there are important sections still missing. Please feel free to edit this document to update or improve upon it, making sure to keep with the general formatting of the document.  The list of contributors can be [found here](https://github.com/iwasrobbed/Swift-CheatSheet/graphs/contributors).
 
@@ -93,41 +92,41 @@ In fact, Swift just aliases C types to a Swift equivalent:
 // C char is aliased as an Int8 and unsigned as UInt8
 let aChar = CChar()
 let anUnsignedChar = CUnsignedChar()
-print("C char size: \(sizeofValue(aChar)) with min: \(Int8.min) and max: \(Int8.max)")
+print("C char size: \(MemoryLayout.size(ofValue: aChar)) with min: \(Int8.min) and max: \(Int8.max)")
 // C char size: 1 with min: -128 and max: 127
-print("C unsigned char size: \(sizeofValue(anUnsignedChar)) with min: \(UInt8.min) and max: \(UInt8.max)")
+print("C unsigned char size: \(MemoryLayout.size(ofValue: anUnsignedChar)) with min: \(UInt8.min) and max: \(UInt8.max)")
 // C unsigned char size: 1 with min: 0 and max: 255
 
 // C short is aliased as an Int16 and unsigned as UInt16
 let aShort = CShort()
 let unsignedShort = CUnsignedShort()
-print("C short size: \(sizeofValue(aShort)) with min: \(Int16.min) and max: \(Int16.max)")
+print("C short size: \(MemoryLayout.size(ofValue: aShort)) with min: \(Int16.min) and max: \(Int16.max)")
 // C short size: 2 with min: -32768 and max: 32767
-print("C unsigned short size: \(sizeofValue(unsignedShort)) with min: \(UInt16.min) and max: \(UInt16.max)")
+print("C unsigned short size: \(MemoryLayout.size(ofValue: unsignedShort)) with min: \(UInt16.min) and max: \(UInt16.max)")
 // C unsigned short size: 2 with min: 0 and max: 65535
 
 // C int is aliased as an Int32 and unsigned as UInt32
 let anInt = CInt()
 let unsignedInt = CUnsignedInt()
-print("C int size: \(sizeofValue(anInt)) with min: \(Int32.min) and max: \(Int32.max)")
+print("C int size: \(MemoryLayout.size(ofValue: anInt)) with min: \(Int32.min) and max: \(Int32.max)")
 // C int size: 4 with min: -2147483648 and max: 2147483647
-print("C unsigned int size: \(sizeofValue(unsignedInt)) with min: \(UInt32.min) and max: \(UInt32.max)")
+print("C unsigned int size: \(MemoryLayout.size(ofValue: unsignedInt)) with min: \(UInt32.min) and max: \(UInt32.max)")
 // C unsigned int size: 4 with min: 0 and max: 4294967295
 
 // C long is aliased as an Int and unsigned as UInt
 let aLong = CLong()
 let unsignedLong = CUnsignedLong()
-print("C long size: \(sizeofValue(aLong)) with min: \(Int.min) and max: \(Int.max)")
+print("C long size: \(MemoryLayout.size(ofValue: aLong)) with min: \(Int.min) and max: \(Int.max)")
 // C long size: 8 with min: -9223372036854775808 and max: 9223372036854775807
-print("C unsigned long size: \(sizeofValue(unsignedLong)) with min: \(UInt.min) and max: \(UInt.max)")
+print("C unsigned long size: \(MemoryLayout.size(ofValue: unsignedLong)) with min: \(UInt.min) and max: \(UInt.max)")
 // C unsigned long size: 8 with min: 0 and max: 18446744073709551615
 
 // C long long is aliased as an Int64 and unsigned as UInt64
 let aLongLong = CLongLong()
 let unsignedLongLong = CUnsignedLongLong()
-print("C long long size: \(sizeofValue(aLongLong)) with min: \(Int64.min) and max: \(Int64.max)")
+print("C long long size: \(MemoryLayout.size(ofValue: aLongLong)) with min: \(Int64.min) and max: \(Int64.max)")
 // C long long size: 8 with min: -9223372036854775808 and max: 9223372036854775807
-print("C unsigned long long size: \(sizeofValue(unsignedLongLong)) with min: \(UInt64.min) and max: \(UInt64.max)")
+print("C unsigned long long size: \(MemoryLayout.size(ofValue: unsignedLongLong)) with min: \(UInt64.min) and max: \(UInt64.max)")
 // C unsigned long long size: 8 with min: 0 and max: 18446744073709551615
 ```
 
@@ -172,18 +171,18 @@ let anEightByteInt: Int64 = 9223372036854775807
 let anEightByteUnsignedInt: UInt64 = 18446744073709551615
 
 // Minimum integer types
-let aTinyInt: int_least8_t = 127
-let aTinyUnsignedInt: uint_least8_t = 255
-let aMediumInt: int_least16_t = 32767
-let aMediumUnsignedInt: uint_least16_t = 65535
-let aNormalInt: int_least32_t = 2147483647
-let aNormalUnsignedInt: uint_least32_t = 4294967295
-let aBigInt: int_least64_t = 9223372036854775807
-let aBigUnsignedInt: uint_least64_t = 18446744073709551615
+let aTinyInt: Int8 = 127
+let aTinyUnsignedInt: UInt8 = 255
+let aMediumInt: Int16 = 32767
+let aMediumUnsignedInt: UInt16  = 65535
+let aNormalInt: Int32  = 2147483647
+let aNormalUnsignedInt: UInt32 = 4294967295
+let aBigInt: Int64 = 9223372036854775807
+let aBigUnsignedInt: UInt64 = 18446744073709551615
 
 // The largest supported integer type
-let theBiggestInt: intmax_t = 9223372036854775807
-let theBiggestUnsignedInt: uintmax_t = 18446744073709551615
+let theBiggestInt: IntMax = 9223372036854775807
+let theBiggestUnsignedInt: UIntMax = 18446744073709551615
 ```
 
 #### Floating Point
@@ -193,12 +192,12 @@ Floats cannot be signed or unsigned.
 ```swift
 // Single precision (32-bit) floating-point. Use it when floating-point values do not require 64-bit precision.
 let aFloat = Float()
-print("Float size: \(sizeofValue(aFloat))")
+print("Float size: \(MemoryLayout.size(ofValue: aFloat))")
 // Float size: 4
 
 // Double precision (64-bit) floating-point. Use it when floating-point values must be very large or particularly precise.
 let aDouble = Double()
-print("Double size: \(sizeofValue(aDouble))")
+print("Double size: \(MemoryLayout.size(ofValue: aDouble))")
 // Double size: 8
 ```
 
@@ -209,7 +208,7 @@ print("Double size: \(sizeofValue(aDouble))")
 let isBool: Bool = true // Or false
 ```
 
-In Objective-C comparative statements, `0` and `nil` were considered `false` and any non-zero/non-nil values were considered `true`. However, this is not the case in Swift. Instead, those objects must conform to the `BooleanType` protocol to be able to compare this way, and you'll need to directly check their value such as `if x == 0` or `if object != nil`
+In Objective-C comparative statements, `0` and `nil` were considered `false` and any non-zero/non-nil values were considered `true`. However, this is not the case in Swift. Instead, you'll need to directly check their value such as `if x == 0` or `if object != nil`
 
 #### Primitives
 
@@ -222,53 +221,43 @@ Enumeration types can be defined as follows:
 ```swift
 // Specifying a typed enum with a name (recommended way)
 enum UITableViewCellStyle: Int {
-    case Default
-    case Value1
-    case Value2
-    case Subtitle
+    case default, valueOne, valueTwo, subtitle
 }
 
 // Accessing it:
-let cellStyle: UITableViewCellStyle = .Default
+let cellStyle: UITableViewCellStyle = .default
 ```
+
+As of Swift 3, all enum options should be named in lowerCamelCased.
 
 #### Working with Bitmasks
 
-Swift unfortunately doesn't have a nice substitute for the old `NS_OPTIONS` macro for creating bitmasks to compare to. In fact, it's downright ugly. See posts [here](http://nshipster.com/rawoptionsettype/) and [here](http://stackoverflow.com/a/24066171/308315).
+Newer Swift versions have a nice substitute for the old `NS_OPTIONS` macro for creating bitmasks to compare to.
 
-An example for posterity (using [Nate Cook's simple generator](http://natecook.com/blog/2014/07/swift-options-bitmask-generator/)):
-
-```swift
-struct ExampleOptions : RawOptionSetType <BooleanType> {
-    // Boilerplate
-    typealias RawValue = UInt
-    private var value: UInt = 0
-    init(_ value: UInt) { self.value = value }
-    init(rawValue value: UInt) { self.value = value }
-    init(nilLiteral: ()) { self.value = 0 }
-    static var allZeros: ExampleOptions { return self(0) }
-    static func fromMask(raw: UInt) -> ExampleOptions { return self(raw) }
-    var rawValue: UInt { return self.value }
-
-    // Define your actual options
-    static var None: ExampleOptions { return self(0) }
-    static var OptionOne: ExampleOptions { return ExampleOptions(1 << 0) }
-    static var OptionTwo: ExampleOptions { return ExampleOptions(1 << 1) }
-    static var OptionThree: ExampleOptions { return ExampleOptions(1 << 2) }
-}
-```
-
-Then you'd be able to do comparisons like so:
+An example for posterity:
 
 ```swift
-let firstOption = ExampleOptions.OptionOne
-let multipleOptions: ExampleOptions = firstOption | .OptionTwo
-if (multipleOptions & .OptionTwo != nil) { // see note below
-    print("multipleOptions has OptionTwo")
+struct Options: OptionSet {
+    let rawValue: Int
+    
+    init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+    
+    init(number: Int) {
+        self.init(rawValue: 1 << number)
+    }
+    
+    static let OptionOne = Options(number: 0)
+    static let OptionTwo = Options(number: 1)
+    static let OptionThree = Options(number: 2)
 }
-```
 
-Note: As of beta 6, `RawOptionSetType` no longer implements `BooleanType` by default, so standard bitmask checks only work if you manually conform to the `BooleanType` protocol. If you don't conform to that, then you'll have to check your `&` comparisons against `nil` rather than `Bool`.
+let options: Options = [.OptionOne, .OptionTwo]
+
+options.contains(.OptionOne) // true
+options.contains(.OptionThree) // false
+```
 
 ### Type Casting
 
@@ -295,9 +284,9 @@ if item is Movie {
 
 The `is` operator returns `true `if an instance is of that object type, or conforms to the specified protocol, and returns `false` if it does not.
 
-#### Operators: as? and as
+#### Operators: as? and as!
 
-If you want to be able to easily access the data during one of these checks, you can use `as?` to optionally (or `as` to force) unwrap the object when necessary:
+If you want to be able to easily access the data during one of these checks, you can use `as?` to optionally (or `as!` to force) unwrap the object when necessary:
 
 ```swift
 for item in library {
@@ -311,14 +300,14 @@ for item in library {
 
 The `as?` version of the downcast operator returns an optional value of the object or protocol's type, and this value is `nil` if the downcast fails or this instance does not conform to the specified protocol.
 
-The `as` version of the downcast operator forces the downcast to the specified object or protocol type and triggers a runtime error if the downcast does not succeed.
+The `as!` version of the downcast operator forces the downcast to the specified object or protocol type and triggers a runtime error if the downcast does not succeed.
 
 #### Casting from Generic Types
 
 If you're working with `AnyObject` objects given from the Cocoa API, you can use:
 
 ```swift
-for movie in someObjects as [Movie] {
+for movie in someObjects as! [Movie] {
     // do stuff
 }
 ```
@@ -332,11 +321,11 @@ for thing in things {
     switch thing {
     case 0 as Int:
         print("Zero as an Int")
-    case let someString as String:
+    case let someString as! String:
         print("S string value of \"\(someString)\"")
-    case let (x, y) as (Double, Double):
+    case let (x, y) as! (Double, Double):
         print("An (x, y) point at \(x), \(y)")
-    case let movie as Movie:
+    case let movie as! Movie:
         print("A movie called '\(movie.name)' by director \(movie.director)")
     default:
         print("Didn't match any of the cases specified")
@@ -374,8 +363,6 @@ Operator | Purpose
 * | Multiplication
 / | Division
 % | Remainder
-
-Note: Unlike the remainder operator in C and Objective-C, Swift’s remainder operator can also operate on floating-point numbers (e.g. `8 % 2.5   // equals 0.5`)
 
 #### Comparative Operators
 
@@ -442,8 +429,6 @@ Operator | Purpose
 &+ | Addition
 &- | Subtraction
 &* | Multiplication
-&/ | Division
-&% | Remainder
 
 Example for unsigned integers (works similarly for signed):
 
@@ -457,14 +442,6 @@ var willUnderflow = UInt8.min
 // willUnderflow equals 0, which is the smallest value a UInt8 can hold
 willUnderflow = willUnderflow &- 1
 // willUnderflow is now equal to 255
-```
-
-Another example to show how you can prevent dividing by zero from resulting in infinity:
-
-```swift
-let x = 1
-let y = x &/ 0
-// y is equal to 0
 ```
 
 #### Other Operators
@@ -492,33 +469,24 @@ Operators can be specified as:
 Examples:
 
 ```swift
-// Turn addition into subtraction
-@infix func + (x: Int, y: Int) -> Int {
-    return x - y
-}
-var z = 10 + 9 // z is 1
-
-// Create an entirely new operator for the Vector2D type
-struct Vector2D {
+struct Vector2D: CustomStringConvertible {
     var x = 0.0, y = 0.0
+    
+    var description: String {
+        return "Vector2D(x: \(x), y: \(y))"
+    }
 }
-func + (left: Vector2D, right: Vector2D) -> Vector2D {
-    return Vector2D(x: left.x + right.x, y: left.y + right.y)
+
+infix operator +-: AdditionPrecedence
+extension Vector2D {
+    static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y - right.y)
+    }
 }
-let vector = Vector2D(x: 3.0, y: 1.0)
-let anotherVector = Vector2D(x: 2.0, y: 4.0)
-let combinedVector = vector + anotherVector
-// combinedVector is a Vector2D instance with values of (5.0, 5.0)
-
-//
-```
-
-If you want to create compound assignment operators, you'll need to use the `@assignment` keyword:
-
-```swift
-@assignment func += (inout left: Vector2D, right: Vector2D) {
-    left = left + right
-}
+let firstVector = Vector2D(x: 1.0, y: 2.0)
+let secondVector = Vector2D(x: 3.0, y: 4.0)
+let plusMinusVector = firstVector +- secondVector
+// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)
 ```
 
 [Back to top](#swift-cheat-sheet)
@@ -651,9 +619,11 @@ weak | Indicates that the variable or property has a weak reference to the objec
 
 Directive | Purpose
 :---: | ---
-public | Indicates the entities are intended for use as API, and can be accessed by any file that imports the module, e.g. as a framework used in several of your projects
-private | Indicates the entities are available only from within the source file where they are defined
+open | Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders
+public | Can only be subclassed by its own module or have its methods overridden by others within the same module
 internal | (Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target
+fileprivate | Indicates the entities are available only from within the source file where they are defined
+private | Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the `{ }` brackets only)
 
 [Back to top](#swift-cheat-sheet)
 
@@ -730,6 +700,15 @@ class func someClassFunction() {
 }
 ```
 
+`static` is similar to class functions where you don't need an instance of the class or struct in order to call a method on it:
+
+```swift
+// Call on a class/struct, e.g. MyStruct.someStaticFunction()
+static func someStaticFunction() {
+    // Code
+}
+```
+
 Declare instance functions:
 
 ```swift
@@ -742,8 +721,8 @@ func doMoreWork() {
 Function arguments are declared within the parentheses:
 
 ```swift
-// Draws a point at the given x and y
-func drawPoint(x: Int, y: Int)
+// Draws a point
+func draw(point: CGPoint)
 ```
 
 Return types are declared as follows:
@@ -755,7 +734,7 @@ func sayHelloToMyLilFriend(lilFriendsName: String) -> String {
 }
 ```
 
-You can have multiple return values:
+You can have multiple return values, referred to as a tuple:
 
 ```swift
 // Returns multiple objects
@@ -774,27 +753,28 @@ And those multiple return values can be optional:
 func sayHelloToMyLilFriend(lilFriendsName: String) -> (msg: String, nameLength: Int)?
 ```
 
-By default, external parameter names aren't given when you call the function, but you can specify that one or more are shown in the method signature by putting a `#` symbol in front of the parameter name:
+By default, external parameter names are given when you call the function, but you can specify that one or more are not shown in the method signature by putting a `_` symbol in front of the parameter name:
 
-```
-func sayHelloToMyLilFriend(#lilFriendsName: String) {
+```swift
+func sayHelloToMyLilFriend(_ lilFriendsName: String) {
     // Code
 }
 
-sayHelloToMyLilFriend(lilFriendsName:"Rob")
+sayHelloToMyLilFriend("Rob")
 ```
+
+or you can rename the variable once within the method scope:
+
+```swift
+func sayHelloToMyLilFriend(friendsName lilFriendsName: String) {
+    // Code
+}
+
+sayHelloToMyLilFriend(friendsName: "Rob") // and local variable is `lilFriendsName`
+```
+
 
 You can also specify default values for the parameters:
-```
-func sayHelloToMyLilFriend(lilFriendsName: String = "Rob") {
-    // Code
-}
-
-sayHelloToMyLilFriend() // "Oh hello, Rob. Cup of tea?"
-sayHelloToMyLilFriend(lilFriendsName:"Jimbob") // "Oh hello, Jimbob. Cup of tea?"
-```
-
-Specifying defaults for your parameters forces you to specify the parameter name (e.g. `lilFriendsName:` when you call the function). However, you can opt-out of this by placing an underscore `_` in front of it in the method signature:
 
 ```swift
 func sayHelloToMyLilFriend(_ lilFriendsName: String = "Rob") {
@@ -808,7 +788,7 @@ sayHelloToMyLilFriend("Jimbob") // "Oh hello, Jimbob. Cup of tea?"
 Swift also supports variadic parameters so you can have an open-ended number of parameters passed in:
 
 ```swift
-func sayHelloToMyLilFriends(lilFriendsName: String...) {
+func sayHelloToMyLilFriends(_ lilFriendsName: String...) {
     // Code
 }
 
@@ -816,7 +796,7 @@ sayHelloToMyLilFriends("Rob", "Jimbob", "Cletus")
 // "Oh hello, Rob, Jimbob and Cletus. Cup of tea?"
 ```
 
-And lastly, you can also use a couple of prefixes to declare input parameters as a variable with `var` or as `inout`.
+And lastly, you can also use a prefix to declare input parameters as `inout`.
 
 An in-out parameter has a value that is passed in to the function, is modified by the function, and is passed back out of the function to replace the original value.
 
@@ -867,7 +847,7 @@ class MyClass {
 }
 ```
 
-To declare them publicly, they should also be within a `public` class as shown below:
+To declare them publicly or openly, they should also be within a `public` or `open` class as shown below:
 
 ```swift
 public class MyClass {
@@ -875,15 +855,23 @@ public class MyClass {
 	public var text: String
 	public let x = 1
 }
+
+// Or
+
+open class MyClass {
+    // Public properties
+	open var text: String
+	open let x = 1
+}
 ```
 
-Private variables and constants are declared with the `private` directive:
+File private variables and constants are declared with the `fileprivate` directive:
 
 ```swift
 class MyClass {
     // Private properties
-	private var text: String
-	private let x = 1
+	fileprivate var text: String
+	fileprivate let x = 1
 }
 ```
 
@@ -893,18 +881,19 @@ In Objective-C, variables were backed by getters, setters, and private instance 
 
 The getter is used to read the value, and the setter is used to write the value. The setter clause is optional, and when only a getter is needed, you can omit both clauses and simply return the requested value directly. However, if you provide a setter clause, you must also provide a getter clause.
 
-You can overrride the getter and setter of a property to create computed properties:
+You can overrride the getter and setter of a property to create the illusion of the Objective-C property behavior, but you'd need to store them as a private property with a different name (not recommended for most scenarios):
 
 ```swift
-// Example of computed property
+private var _x: Int = 0
+
 var x: Int {
     get {
         print("Accessing x...")
-        return self.x
+        return _x
     }
     set {
         print("Setting x...")
-        self.x = newValue
+        _x = newValue
     }
 }
 ```
@@ -930,7 +919,8 @@ var value: String = "" {
 Properties can be accessed using dot notation:
 
 ```swift
-self.myVariableOrConstant
+myClass.myVariableOrConstant
+self.myVariable // Self is optional here except within closure scopes
 ```
 
 #### Local Variables
@@ -940,7 +930,7 @@ Local variables and constants only exist within the scope of a function.
 ```swift
 func doWork() {
     let localStringVariable = "Some local string variable."
-    self.doSomethingWithString(localStringVariable)
+    self.doSomething(string: localStringVariable)
 }
 ```
 
@@ -958,6 +948,10 @@ These both use `camelCase` where the first letter of the first word is lowercase
 
 These both use `CapitalCase` where the first letter of every word is capitalized.
 
+### Enums
+
+The options in an enum should be `lowerCamelCased`
+
 #### Functions
 
 These should use verbs if they perform some action (e.g. `performInBackground`).  You should be able to infer what is happening, what arguments a function takes, or what is being returned just by reading a function signature.
@@ -966,21 +960,20 @@ Example:
 
 ```swift
 // Correct
-override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    // Code
-}
+func move(from start: Point, to end: Point) {}
 
-// Incorrect (not expressive enough)
-override func table(table: UITableView, cell indexPath: NSIndexPath) -> UITableViewCell {
-    // Code
-}
+// Incorrect (likely too expressive, but arguable)
+func moveBetweenPoints(from start: Point, to end: Point) {}
+
+// Incorrect (not expressive enough and lacking argument clarity)
+func move(x: Point, y: Point) {}
 ```
 
 [Back to top](#swift-cheat-sheet)
 
 ## Closures
 
-Closures in Swift are similar to blocks and are essentially chunks of code, typically organized within a `{}` clause, that are passed between functions or to execute code as a callback within a function. Swift's `func` functions are actually just a special case of a closure in use.
+Closures in Swift are similar to blocks in Objective-C and are essentially chunks of code, typically organized within a `{}` clause, that are passed between functions or to execute code as a callback within a function. Swift's `func` functions are actually just a special case of a closure in use.
 
 #### Syntax
 
@@ -1004,19 +997,20 @@ people.map({
 // Oh hai, Cletus
 
 // Closure for alphabetically reversing an array of names, where sorted is a Swift library function
-reversed = sorted(names, { (s1: String, s2: String) -> Bool in
+let names = ["Francesca", "Joe", "Bill", "Sally", ]
+var reversed = names.sorted { (s1: String, s2: String) -> Bool in
     return s1 > s2
-})
+}
 // Or on a single line:
-reversed = sorted(names, { (s1: String, s2: String) -> Bool in return s1 > s2 } )
+reversed = names.sorted{ (s1: String, s2: String) -> Bool in return s1 > s2 }
 // Or because Swift can infer the Bool type:
-reversed = sorted(names, { s1, s2 in return s1 > s2 } )
+reversed = names.sorted { s1, s2 in return s1 > s2 }
 // Or because the return statement is implied:
-reversed = sorted(names, { s1, s2 in s1 > s2 } )
+reversed = names.sorted { s1, s2 in s1 > s2 }
 // Or even shorter using shorthand argument names, such as $0, $1, $2, etc.:
-reversed = sorted(names, { $0 > $1 } )
+reversed = names.sorted { $0 > $1 }
 // Or just ridiculously short because Swift's String greater-than operator implementation exactly matches this function definition:
-reversed = sorted(names, >)
+reversed = names.sorted(by: >)
 ```
 
 If the closure is the last parameter to the function, you can also use the trailing closure pattern. This is especially useful when the closure code is especially long and you'd like some extra space to organize it:
@@ -1054,6 +1048,49 @@ func makeIncrementor(forIncrement amount: Int) -> () -> Int {
 ```
 
 Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate a variable to say that they can be used within the nested function. Swift also handles all memory management involved in disposing of variables when they are no longer needed by the function.
+
+#### Capturing Self
+
+If you create a closure that references `self.*` it will capture `self` and retain a strong reference to it. This is sometimes the intended behavior, but often could lead to retain cycles where both objects won't get deallocated at the end of their lifecycles.
+
+The two best options are to use `unowned` or `weak`. This might look a bit messy, but saves a lot of headache.
+
+Use `unowned` when you know the closure will only be called if `self` still exists, but you don't want to create a strong (retain) reference.
+
+Use `weak` if there is a chance that `self` will not exist, or if the closure is not dependent upon `self` and will run without it. If you do use `weak` also remember that `self` will be an optional variable and should be checked for existence.
+
+```swift
+typealias SomeClosureType = (_ value: String) -> ()
+
+class SomeClass {
+    fileprivate var currentValue = ""
+
+    init() {
+        someMethod { (value) in // Retained self
+            self.currentValue = value
+        }
+        
+        someMethod { [unowned self] (value) in // Not retained, but expected to exist
+            self.currentValue = value
+            
+        }
+        
+        someMethod { [weak self] value in // Not retained, not expected to exist
+            // Or, alternatively you could do
+            guard let sSelf = self else { return }
+            
+            // Or, alternatively use `self?` without the guard
+            sSelf.currentValue = value
+        }
+    }
+    
+    func someMethod(closure: SomeClosureType) {
+        closure("Hai")
+    }
+}
+```
+
+Reference: [Apple: Automatic Reference Counting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
 
 [Back to top](#swift-cheat-sheet)
 
@@ -1134,7 +1171,7 @@ for (animalName, legCount) in numberOfLegs {
 }
 ```
 
-If you need to cast to a certain object type, see the earlier discussion about the `as` and `as?` keywords.
+If you need to cast to a certain object type, see the earlier discussion about the `as!` and `as?` keywords.
 
 #### While Loop
 
@@ -1158,10 +1195,10 @@ Switch statements are often used in place of `if` statements if there is a need 
 
 ```swift
 switch errorStatusCode {
-    case kRPNetworkErrorCode:
+    case .network:
         // Code to execute if it matches
 
-     case kRPWifiErrorCode:
+     case .wifi:
         // Code to execute if it matches
 
      default:
@@ -1205,18 +1242,18 @@ User defaults are basically a way of storing simple preference values which can 
 ### Storing Values
 
 ```swift
-let userDefaults = NSUserDefaults.standardUserDefaults()
+let userDefaults = UserDefaults.standard
 userDefaults.setValue("Some Value", forKey: "RPSomeUserPreference")
 ```
 
 ### Retrieving Values
 
 ```swift
-let userDefaults = NSUserDefaults.standardUserDefaults()
-let someValue: AnyObject? = userDefaults.valueForKey("RPSomeUserPreference")
+let userDefaults = UserDefaults.standard
+let someValue = userDefaults.value(forKey: "RPSomeUserPreference") as AnyObject?
 ```
 
-There are also other convenience functions on `NSUserDefaults` instances such as `boolForKey(...)`, `stringForKey(...)`, etc.
+There are also other convenience functions on `UserDefaults` instances such as `bool(forKey:...)`, `string(forKey:...)`, etc.
 
 [Back to top](#swift-cheat-sheet)
 
@@ -1231,24 +1268,33 @@ Singleton's are a special kind of class where only one instance of the class exi
 To turn a class into a singleton, you use the following implementation where the function name is prefixed with `shared` plus another word which best describes your class.  For example, if the class is a network or location manager, you would name the function `sharedManager` instead of `sharedInstance`.
 
 ```swift
-private let _singletonInstance = MyClass()
 class MyClass {
-  class var sharedInstance: MyClass {
-    return _singletonInstance
-  }
 
-  // More class code here
+    // MARK: - Instantiation
+    
+    // Naming convention:
+    // sharedInstance, sharedManager, sharedController, etc.
+    // depending on the class type
+    static let sharedInstance = MyClass()
+   
+    // This prevents others from using the default '()' initializer for this class.
+    fileprivate init() {}
+    
+    var isReady = true
+    
+    // More class code here
 }
 ```
 
-**Explanation**: The lazy initializer for a global variable is run as `dispatch_once` the first time that variable is accessed to make sure the initialization is atomic. This ensures it is thread safe, fast, lazy, and also bridged to ObjC for free. More from Apple [here](https://developer.apple.com/swift/blog/?id=7).
+**Explanation**: The static constant `sharedInstance` is run as `dispatch_once` the first time that variable is accessed to make sure the initialization is atomic. This ensures it is thread safe, fast, lazy, and also bridged to ObjC for free. More from [here](http://krakendev.io/blog/the-right-way-to-write-a-singleton).
 
 **Usage**: You would get a reference to that singleton class in another class with the following code:
 
 ```swift
+// Now you could do
 let myClass = MyClass.sharedInstance
-myClass.doSomething()
-print("Attribute value is \(myClass.someVariableOrConstant)")
+let answer = myClass.isReady ? "Yep!" : "Nope!"
+print("Are you ready to rock and roll? \(answer)")
 ```
 
 [Back to top](#swift-cheat-sheet)
