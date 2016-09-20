@@ -1046,6 +1046,49 @@ func makeIncrementor(forIncrement amount: Int) -> () -> Int {
 
 Swift determines what should be captured by reference and what should be copied by value. You don’t need to annotate a variable to say that they can be used within the nested function. Swift also handles all memory management involved in disposing of variables when they are no longer needed by the function.
 
+#### Capturing Self
+
+If you create a closure that references `self.*` it will capture `self` and retain a strong reference to it. This is sometimes the intended behavior, but often could lead to retain cycles where both objects won't get deallocated at the end of their lifecycles.
+
+The two best options are to use `unowned` or `weak`. This might look a bit messy, but saves a lot of headache.
+
+Use `unowned` when you know the closure will only be called if `self` still exists, but you don't want to create a strong (retain) reference.
+
+Use `weak` if there is a chance that `self` will not exist, or if the closure is not dependent upon `self` and will run without it. If you do use `weak` also remember that `self` will be an optional variable and should be checked for existence.
+
+```swift
+typealias SomeClosureType = (_ value: String) -> ()
+
+class SomeClass {
+    fileprivate var currentValue = ""
+
+    init() {
+        someMethod { (value) in // Retained self
+            self.currentValue = value
+        }
+        
+        someMethod { [unowned self] (value) in // Not retained, but expected to exist
+            self.currentValue = value
+            
+        }
+        
+        someMethod { [weak self] value in // Not retained, not expected to exist
+            // Or, alternatively you could do
+            guard let sSelf = self else { return }
+            
+            // Or, alternatively use `self?` without the guard
+            sSelf.currentValue = value
+        }
+    }
+    
+    func someMethod(closure: SomeClosureType) {
+        closure("Hai")
+    }
+}
+```
+
+Reference: [Apple: Automatic Reference Counting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
+
 [Back to top](#swift-cheat-sheet)
 
 ## Generics
