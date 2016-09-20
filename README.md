@@ -1,4 +1,6 @@
-## Swift Cheat Sheet
+## Swift 2.3 and below Cheat Sheet
+
+Want to help bring this up to Swift 3.0 standards? File an issue or open a pull request! :) 
 
 This is not meant to be a beginner's guide or a detailed discussion about Swift; it is meant to be a quick reference to common, high level topics.
 
