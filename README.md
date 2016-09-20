@@ -234,41 +234,32 @@ let cellStyle: UITableViewCellStyle = .Default
 
 #### Working with Bitmasks
 
-Swift unfortunately doesn't have a nice substitute for the old `NS_OPTIONS` macro for creating bitmasks to compare to. In fact, it's downright ugly. See posts [here](http://nshipster.com/rawoptionsettype/) and [here](http://stackoverflow.com/a/24066171/308315).
+Newer Swift versions have a nice substitute for the old `NS_OPTIONS` macro for creating bitmasks to compare to.
 
-An example for posterity (using [Nate Cook's simple generator](http://natecook.com/blog/2014/07/swift-options-bitmask-generator/)):
-
-```swift
-struct ExampleOptions : RawOptionSetType <BooleanType> {
-    // Boilerplate
-    typealias RawValue = UInt
-    private var value: UInt = 0
-    init(_ value: UInt) { self.value = value }
-    init(rawValue value: UInt) { self.value = value }
-    init(nilLiteral: ()) { self.value = 0 }
-    static var allZeros: ExampleOptions { return self(0) }
-    static func fromMask(raw: UInt) -> ExampleOptions { return self(raw) }
-    var rawValue: UInt { return self.value }
-
-    // Define your actual options
-    static var None: ExampleOptions { return self(0) }
-    static var OptionOne: ExampleOptions { return ExampleOptions(1 << 0) }
-    static var OptionTwo: ExampleOptions { return ExampleOptions(1 << 1) }
-    static var OptionThree: ExampleOptions { return ExampleOptions(1 << 2) }
-}
-```
-
-Then you'd be able to do comparisons like so:
+An example for posterity:
 
 ```swift
-let firstOption = ExampleOptions.OptionOne
-let multipleOptions: ExampleOptions = firstOption | .OptionTwo
-if (multipleOptions & .OptionTwo != nil) { // see note below
-    print("multipleOptions has OptionTwo")
+struct Options: OptionSet {
+    let rawValue: Int
+    
+    init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+    
+    init(number: Int) {
+        self.init(rawValue: 1 << number)
+    }
+    
+    static let OptionOne = Options(number: 0)
+    static let OptionTwo = Options(number: 1)
+    static let OptionThree = Options(number: 2)
 }
-```
 
-Note: As of beta 6, `RawOptionSetType` no longer implements `BooleanType` by default, so standard bitmask checks only work if you manually conform to the `BooleanType` protocol. If you don't conform to that, then you'll have to check your `&` comparisons against `nil` rather than `Bool`.
+let options: Options = [.OptionOne, .OptionTwo]
+
+options.contains(.OptionOne) // true
+options.contains(.OptionThree) // false
+```
 
 ### Type Casting
 
