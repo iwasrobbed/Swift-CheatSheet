@@ -1222,24 +1222,33 @@ Singleton's are a special kind of class where only one instance of the class exi
 To turn a class into a singleton, you use the following implementation where the function name is prefixed with `shared` plus another word which best describes your class.  For example, if the class is a network or location manager, you would name the function `sharedManager` instead of `sharedInstance`.
 
 ```swift
-private let _singletonInstance = MyClass()
 class MyClass {
-  class var sharedInstance: MyClass {
-    return _singletonInstance
-  }
 
-  // More class code here
+    // MARK: - Instantiation
+    
+    // Naming convention:
+    // sharedInstance, sharedManager, sharedController, etc.
+    // depending on the class type
+    static let sharedInstance = MyClass()
+   
+    // This prevents others from using the default '()' initializer for this class.
+    fileprivate init() {}
+    
+    var isReady = true
+    
+    // More class code here
 }
 ```
 
-**Explanation**: The lazy initializer for a global variable is run as `dispatch_once` the first time that variable is accessed to make sure the initialization is atomic. This ensures it is thread safe, fast, lazy, and also bridged to ObjC for free. More from Apple [here](https://developer.apple.com/swift/blog/?id=7).
+**Explanation**: The static constant `sharedInstance` is run as `dispatch_once` the first time that variable is accessed to make sure the initialization is atomic. This ensures it is thread safe, fast, lazy, and also bridged to ObjC for free. More from [here](http://krakendev.io/blog/the-right-way-to-write-a-singleton).
 
 **Usage**: You would get a reference to that singleton class in another class with the following code:
 
 ```swift
+// Now you could do
 let myClass = MyClass.sharedInstance
-myClass.doSomething()
-print("Attribute value is \(myClass.someVariableOrConstant)")
+let answer = myClass.isReady ? "Yep!" : "Nope!"
+print("Are you ready to rock and roll? \(answer)")
 ```
 
 [Back to top](#swift-cheat-sheet)
