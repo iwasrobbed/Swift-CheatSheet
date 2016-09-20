@@ -295,9 +295,9 @@ if item is Movie {
 
 The `is` operator returns `true `if an instance is of that object type, or conforms to the specified protocol, and returns `false` if it does not.
 
-#### Operators: as? and as
+#### Operators: as? and as!
 
-If you want to be able to easily access the data during one of these checks, you can use `as?` to optionally (or `as` to force) unwrap the object when necessary:
+If you want to be able to easily access the data during one of these checks, you can use `as?` to optionally (or `as!` to force) unwrap the object when necessary:
 
 ```swift
 for item in library {
@@ -311,7 +311,7 @@ for item in library {
 
 The `as?` version of the downcast operator returns an optional value of the object or protocol's type, and this value is `nil` if the downcast fails or this instance does not conform to the specified protocol.
 
-The `as` version of the downcast operator forces the downcast to the specified object or protocol type and triggers a runtime error if the downcast does not succeed.
+The `as!` version of the downcast operator forces the downcast to the specified object or protocol type and triggers a runtime error if the downcast does not succeed.
 
 #### Casting from Generic Types
 
