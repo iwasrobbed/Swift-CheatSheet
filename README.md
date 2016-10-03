@@ -72,6 +72,9 @@ Using `MARK` to organize your code:
 // Declare some more functions or variables here
 ```
 
+**Auto-generating method documentation:**
+In a method's preceding line, press `⌥ Option + ⌘ Command + /` to automatically generate a documentation stub for your method.
+
 [Back to top](#swift-3-cheat-sheet)
 
 ## Data Types
