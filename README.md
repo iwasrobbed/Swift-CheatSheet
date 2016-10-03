@@ -75,7 +75,7 @@ Using `MARK` to organize your code:
 **Auto-generating method documentation:**
 In a method's preceding line, press `⌥ Option + ⌘ Command + /` to automatically generate a documentation stub for your method.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Data Types
 
@@ -349,7 +349,7 @@ let anInt: Int = Int(aDifferentDataType)
 let aString: String = String(anInt)
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Operators
 
@@ -456,7 +456,7 @@ Operator | Purpose
 ! | Force unwrap object value
 ? | Safely unwrap object value
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Operator Overloading
 
@@ -492,7 +492,7 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector is a Vector2D instance with values of (4.0, -2.0)
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Declaring Classes
 
@@ -550,7 +550,7 @@ let myClass = MyClass(x: 1, y: 2)
 
 where `x` and `y` are variables that are passed in at the time of instantiation.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Declarations
 
@@ -628,7 +628,7 @@ internal | (Default) Indicates the entities are only available to the entire mod
 fileprivate | Indicates the entities are available only from within the source file where they are defined
 private | Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the `{ }` brackets only)
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Literals
 
@@ -679,7 +679,7 @@ if let value = example["hi"] {
 
 For mutable literals, declare it with `var`; immutable with `let`.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Functions
 
@@ -813,7 +813,7 @@ Functions are called using dot syntax: `myClass.doWork()` or `self.sayHelloToMyL
 
 At times, it is necessary to call a function in the superclass using `super.someMethod()`.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Constants and Variables
 
@@ -937,7 +937,7 @@ func doWork() {
 }
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Naming Conventions
 
@@ -972,7 +972,7 @@ func moveBetweenPoints(from start: Point, to end: Point) {}
 func move(x: Point, y: Point) {}
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Closures
 
@@ -1095,13 +1095,13 @@ class SomeClass {
 
 Reference: [Apple: Automatic Reference Counting](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html)
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Generics
 
 Coming soon...
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Control Statements
 
@@ -1218,25 +1218,25 @@ Although `break` is not required in Swift, you can still use a `break` statement
 * `return` : Stops execution and returns to the calling function.  It can also be used to return a value from a function.
 * `break` : Used to stop execution of a loop.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Extending Classes
 
 Coming soon...
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Error Handling
 
 Coming soon...
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Passing Information
 
 Coming soon...
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## User Defaults
 
@@ -1258,7 +1258,7 @@ let someValue = userDefaults.value(forKey: "RPSomeUserPreference") as AnyObject?
 
 There are also other convenience functions on `UserDefaults` instances such as `bool(forKey:...)`, `string(forKey:...)`, etc.
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Common Patterns
 
@@ -1300,7 +1300,7 @@ let answer = myClass.isReady ? "Yep!" : "Nope!"
 print("Are you ready to rock and roll? \(answer)")
 ```
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
 
 ## Unicode Support
 
@@ -1308,4 +1308,4 @@ Although I don't recommend this, Swift will compile even if you use emoji's in y
 
 More info from Apple [here](https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/StringsAndCharacters.html)
 
-[Back to top](#swift-cheat-sheet)
+[Back to top](#swift-3-cheat-sheet)
