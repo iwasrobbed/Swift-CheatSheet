@@ -640,8 +640,9 @@ Syntax | What it does
 `28` | Returns an `Int`
 `3.14`, `0xFp2`, `1.25e2` | Returns a `Float` object
 `true`, `false` | Returns a `Bool` object
-`[]` | Returns an `Array` object
-`[keyName:value]` | Returns a `Dictionary` object
+`[]` | Returns an `Array` object 
+`Set<>` | Returns a `Set` object (a hashable array with no ordering)
+`[key:value]` | Returns a `Dictionary` object (hash tables with no ordering, looking up values through keys)
 `0b` | Returns a binary digit
 `0o` | Returns an octal digit
 `0x` | Returns a hexadecimal digit
@@ -659,21 +660,46 @@ Special characters can be included:
 * Single Quote: `\'`
 * Unicode scalar: `\u{n}` where n is between one and eight hexadecimal digits
 
-#### Array Access Syntax
+The built-in methods and accessors for Strings are different in Swift 1.x, 2.1+, and 3.0, and so are not covered here.
+
+#### Array access syntax
 
 ```swift
-let example = [ "hi", "there", 23, true ]
-print("item at index 0: \(example[0])")
+// single item access, insertion and deletion
+var example = [ "hi", "there", 23, true ]
+print("item at index 0: \(example[0])") // prints "hi"
+example.insert( "new item", at:1 ) // "new item" is now the second in the list
+example.remove( at:0 ) // removes the first item "hi", and closes up the gap
+
+// range access
+var fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+fibonacci[5...8] // gives [5, 8, 13]. Note: the end range value is excluded
+fibonacci[0...fibonacci.endIndex] // gives all except last item
+
+// iterating
+for term in fibonacci { print (term) }
+```
+#### Set access syntax
+
+``` swift
+var musicGenres: Set<String> = ["Indie", "Pop", "Folk", "Electronica"]
+musicGenres.remove("Indie")
+musicGenres.insert("Rock")
+print("I have a list of \(musicGenres.count) music genres")
 ```
 
-#### Dictionary Access Syntax
+#### Dictionary access syntax
 
 ```swift
-let example = [ "hi" : "there", "iOS" : "people" ]
-if let value = example["hi"] {
-    print("hi \(value)")
+var airlines = [ "BA" : "British Airways", "AA" : "American Airlines" ]
+airlines["PA"] = "Pan Am"   // adding a new item
+airlines["PA"] = nil        // removing an item
+if let airlineName = airlines["BA"] {
+    print("Fly with \(airlineName)")
 }
 ```
+
+See also Iterating over Arrays and Dictionaries below.
 
 #### Mutability
 
@@ -903,7 +929,7 @@ var x: Int {
 
 #### Access Callbacks
 
-Swift also has callbacks for when a property will be or was set using `willSet` and `didSet` shown below:
+Swift also has callbacks (or 'observers') for when a property will be or was set using `willSet` and `didSet` shown below:
 
 ```swift
 var numberOfEdits = 0
@@ -1209,7 +1235,7 @@ switch errorStatusCode {
 }
 ```
 
-Switch statements in Swift do not fall through the bottom of each case and into the next one by default. Instead, the entire switch statement finishes its execution as soon as the first matching switch case is completed, without requiring an explicit `break` statement. This makes the switch statement safer and easier to use than in C, and avoids executing more than one switch case by mistake.
+Switch statements in Swift do not fall through the bottom of each case and into the next one by default (unless you make that happen using the `fallthrough` statement). Instead, the entire switch statement finishes its execution as soon as the first matching switch case is completed, without requiring an explicit `break` statement. This makes the switch statement safer and easier to use than in C, and avoids executing more than one switch case by mistake.
 
 #### Exiting Loops
 
@@ -1228,7 +1254,37 @@ Coming soon...
 
 ## Error Handling
 
-Coming soon...
+Errors can be handled by either
+
+* guard-throw control statements
+
+```swift
+func vend() throws -> String {
+	// just the error handling ...
+	guard item.count > 0 else {
+		throw VendingMachineError.outOfStock
+	}
+	guard item.price <= valueDeposited else {
+		throw VendingMachineError.insufficientFunds(item.price - valueDeposited)
+	}
+}
+```
+
+* do-catch control statements
+
+```swift
+var vendingMachine = VendingMachine()
+vendingMachine.valueDeposited = 2.50
+do {
+	try buyItem(animal:"Kangaroo", vendingMachine: vendingMachine)
+} catch VendingMachineError.invalidSelection {
+	print "Invalid selection."
+} catch VendingMachineError.outOfStock {
+	print "Out of stock."
+} catch VendingMachineError.insufficientFunds {
+	print "Insufficient funds."
+}
+```
 
 [Back to top](#swift-3-cheat-sheet)
 
