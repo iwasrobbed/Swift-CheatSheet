@@ -667,7 +667,7 @@ Syntax | What it does
 `true`, `false` | Returns a `Bool` object
 `[]` | Returns an `Array` object 
 `Set<>` | Returns a `Set` object (a hashable array with no ordering)
-`[key:value]` | Returns a `Dictionary` object (arrays with no ordering, looking up values through keys)
+`[key:value]` | Returns a `Dictionary` object (hash tables with no ordering, looking up values through keys)
 `0b` | Returns a binary digit
 `0o` | Returns an octal digit
 `0x` | Returns a hexadecimal digit
@@ -714,7 +714,7 @@ print("I have a list of \(musicGenres.count) music genres")
 #### Dictionary access syntax
 
 ```swift
-let airlines = [ "BA" : "British Airways", "AA" : "American Airlines" ]
+var airlines = [ "BA" : "British Airways", "AA" : "American Airlines" ]
 airlines["PA"] = "Pan Am"   // adding a new item
 airlines["PA"] = nil        // removing an item
 if let airlineName = airlines["BA"] {
@@ -1213,17 +1213,34 @@ Coming soon...
 Errors can be handled by either
 
 * guard-throw control statements
-* do-catch control statements
-* 
 
-```switch
-func vend() throws -> String
+```swift
+func vend() throws -> String {
+	// just the error handling ...
 	guard item.count > 0 else {
 		throw VendingMachineError.outOfStock
+	}
+	guard item.price <= valueDeposited else {
+		throw VendingMachineError.insufficientFunds(item.price - valueDeposited)
 	}
 }
 ```
 
+* do-catch control statements
+
+```swift
+var vendingMachine = VendingMachine()
+vendingMachine.valueDeposited = 2.50
+do {
+	try buyItem(animal:"Kangaroo", vendingMachine: vendingMachine)
+} catch VendingMachineError.invalidSelection {
+	print "Invalid selection."
+} catch VendingMachineError.outOfStock {
+	print "Out of stock."
+} catch VendingMachineError.insufficientFunds {
+	print "Insufficient funds."
+}
+```
 
 [Back to top](#swift-cheat-sheet)
 
