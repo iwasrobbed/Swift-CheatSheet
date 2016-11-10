@@ -690,14 +690,16 @@ The built-in methods and accessors for Strings are different in Swift 1.x, 2.1+,
 #### Array access syntax
 
 ```swift
-// single item access
-let example = [ "hi", "there", 23, true ]
-print("item at index 0: \(example[0])")
+// single item access, insertion and deletion
+var example = [ "hi", "there", 23, true ]
+print("item at index 0: \(example[0])") // prints "hi"
+example.insert( "new item", at:1 ) // "new item" is now the second in the list
+example.remove( at:0 ) // removes the first item "hi", and closes up the gap
 
 // range access
-var fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 5]
-fibonacci[5..8] // [5, 8, 13]. Note: the end range value is excluded
-fibonacci[0..fibonacci.endIndex] // all except last item
+var fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+fibonacci[5...8] // gives [5, 8, 13]. Note: the end range value is excluded
+fibonacci[0...fibonacci.endIndex] // gives all except last item
 
 // iterating
 for term in fibonacci { print (term) }
