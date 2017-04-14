@@ -137,22 +137,22 @@ From the [docs](https://developer.apple.com/library/ios/documentation/swift/conc
 
 C Type | Swift Type
 :---: | :---:
-bool | CBool
-char, signed char | CChar
-unsigned char | CUnsignedChar
-short | CShort
-unsigned short | CUnsignedShort
-int | CInt
-unsigned int | CUnsignedInt
-long | CLong
-unsigned long | CUnsignedLong
-long long | CLongLong
-unsigned long long | CUnsignedLongLong
-wchar_t | CWideChar
-char16_t | CChar16
-char32_t | CChar32
-float | CFloat
-double | CDouble
+| bool | CBool
+| char, signed char | CChar
+| unsigned char | CUnsignedChar
+| short | CShort
+| unsigned short | CUnsignedShort
+| int | CInt
+| unsigned int | CUnsignedInt
+| long | CLong
+| unsigned long | CUnsignedLong
+| long long | CLongLong
+| unsigned long long | CUnsignedLongLong
+| wchar_t | CWideChar
+| char16_t | CChar16
+| char32_t | CChar32
+| float | CFloat
+| double | CDouble
 
 #### Integers
 
@@ -361,67 +361,67 @@ Arithmetic operators (`+`, `-`, `*`, `/`, `%`) detect and disallow value overflo
 
 Operator | Purpose
 :---: | ---
-+ | Addition
-- | Subtraction
-* | Multiplication
-/ | Division
-% | Remainder
+| + | Addition
+| - | Subtraction
+| * | Multiplication
+| / | Division
+| % | Remainder
 
 #### Comparative Operators
 
 Operator | Purpose
 :---: | ---
-== | Equal to
-=== | Identical to
-!= | Not equal to
-!== | Not identical to
-~= | Pattern match
-> | Greater than
-< | Less than
->= | Greater than or equal to
-<= | Less than or equal to
+| == | Equal to
+| === | Identical to
+| != | Not equal to
+| !== | Not identical to
+| ~= | Pattern match
+| > | Greater than
+| < | Less than
+| >= | Greater than or equal to
+| <= | Less than or equal to
 
 #### Assignment Operators
 
 Operator | Purpose
 :---: | ---
-= | Assign
-+= | Addition
--= | Subtraction
-*= | Multiplication
-/= | Division
-%= | Remainder
-&= | Bitwise AND
-&#124;= | Bitwise Inclusive OR
-^= | Exclusive OR
-<<= | Shift Left
->>= | Shift Right
+| = | Assign
+| += | Addition
+| -= | Subtraction
+| *= | Multiplication
+| /= | Division
+| %= | Remainder
+| &= | Bitwise AND
+| &#124;= | Bitwise Inclusive OR
+| ^= | Exclusive OR
+| <<= | Shift Left
+| >>= | Shift Right
 
 #### Logical Operators
 
 Operator | Purpose
 :---: | ---
-! | NOT
-&& | Logical AND
-&#124;&#124; | Logical OR
+| ! | NOT
+| && | Logical AND
+| &#124;&#124; | Logical OR
 
 #### Range Operators
 
 Operator | Purpose
 :---: | ---
-..< | Half-open range
-... | Closed range
+| ..< | Half-open range
+| ... | Closed range
 
 #### Bitwise Operators
 
 Operator | Purpose
 :---: | ---
-& | Bitwise AND
-&#124; | Bitwise Inclusive OR
-^ | Exclusive OR
-~ | Unary complement (bit inversion)
-<< | Shift Left
->> | Shift Right
+| & | Bitwise AND
+| &#124; | Bitwise Inclusive OR
+| ^ | Exclusive OR
+| ~ | Unary complement (bit inversion)
+| << | Shift Left
+| >> | Shift Right
 
 #### Overflow and Underflow Operators
 
@@ -429,9 +429,9 @@ Typically, assigning or incrementing an integer, float, or double past it's rang
 
 Operator | Purpose
 :---: | ---
-&+ | Addition
-&- | Subtraction
-&* | Multiplication
+| &+ | Addition
+| &- | Subtraction
+| &* | Multiplication
 
 Example for unsigned integers (works similarly for signed):
 
@@ -451,10 +451,10 @@ willUnderflow = willUnderflow &- 1
 
 Operator | Purpose
 :---: | ---
-?? | Nil coalescing
-?: | Ternary conditional
-! | Force unwrap object value
-? | Safely unwrap object value
+| ?? | Nil coalescing
+| ?: | Ternary conditional
+| ! | Force unwrap object value
+| ? | Safely unwrap object value
 
 [Back to top](#swift-3-cheat-sheet)
 
@@ -562,71 +562,71 @@ Swift doesn't come with a preprocessor so it only supports a limited number of s
 
 Directive | Purpose
 :---: | ---
-#if | An `if` conditional statement
-#elif | An `else if` conditional statement
-#else | An `else` conditional statement
-#endif | An `end if` conditional statement
+| #if | An `if` conditional statement
+| #elif | An `else if` conditional statement
+| #else | An `else` conditional statement
+| #endif | An `end if` conditional statement
 
 #### Imports
 
 Directive | Purpose
 :---: | ---
-import | Imports a framework
+| import | Imports a framework
 
 #### Constants & Variables
 
 Directive | Purpose
 :---: | ---
-let | Declares local or global constant
-var | Declares a local or global variable
-class | Declares a class-level constant or variable
-static | Declares a static type
+| let | Declares local or global constant
+| var | Declares a local or global variable
+| class | Declares a class-level constant or variable
+| static | Declares a static type
 
 #### Classes, Structure, Functions and Protocols
 
 Directive | Purpose
 :---: | ---
-typealias | Introduces a named alias of an existing type
-enum | Introduces a named enumeration
-struct | Introduces a named structure
-class | Begins the declaration of a class
-init | Introduces an initializer for a class, struct or enum
-init? | Produces an optional instance or an implicitly unwrapped optional instance; can return `nil`
-deinit | Declares a function called automatically when there are no longer any references to a class object, just before the class object is deallocated
-func | Begins the declaration of a function
-protocol | Begins the declaration of a formal protocol
-static | Defines as type-level within struct or enum
-convenience | Delegate the init process to another initializer or to one of the class’s designated initializers
-extension | Extend the behavior of class, struct, or enum
-subscript | Adds subscripting support for objects of a particular type, normally for providing a convenient syntax for accessing elements in a collective, list or sequence
-override | Marks overriden initializers
+| typealias | Introduces a named alias of an existing type
+| enum | Introduces a named enumeration
+| struct | Introduces a named structure
+| class | Begins the declaration of a class
+| init | Introduces an initializer for a class, struct or enum
+| init? | Produces an optional instance or an implicitly unwrapped optional instance; can return `nil`
+| deinit | Declares a function called automatically when there are no longer any references to a class object, just before the class object is deallocated
+| func | Begins the declaration of a function
+| protocol | Begins the declaration of a formal protocol
+| static | Defines as type-level within struct or enum
+| convenience | Delegate the init process to another initializer or to one of the class’s designated initializers
+| extension | Extend the behavior of class, struct, or enum
+| subscript | Adds subscripting support for objects of a particular type, normally for providing a convenient syntax for accessing elements in a collective, list or sequence
+| override | Marks overriden initializers
 
 #### Operators
 
 Directive | Purpose
 :---: | ---
-operator | Introduces a new infix, prefix, or postfix operator
+| operator | Introduces a new infix, prefix, or postfix operator
 
 #### Declaration Modifiers
 
 Directive | Purpose
 :---: | ---
-dynamic | Marks a member declaration so that access is always dynamically dispatched using the Objective-C runtime and never inlined or devirtualized by the compiler
-final | Specifies that a class can’t be subclassed, or that a property, function, or subscript of a class can’t be overridden in any subclass
-lazy | Indicates that the property’s initial value is calculated and stored at most once, when the property is first accessed
-optional | Specifies that a protocol’s property, function, or subscript isn’t required to be implemented by conforming members
-required | Marks the initializer so that every subclass must implement it
-weak | Indicates that the variable or property has a weak reference to the object stored as its value
+| dynamic | Marks a member declaration so that access is always dynamically dispatched using the Objective-C runtime and never inlined or devirtualized by the compiler
+| final | Specifies that a class can’t be subclassed, or that a property, function, or subscript of a class can’t be overridden in any subclass
+| lazy | Indicates that the property’s initial value is calculated and stored at most once, when the property is first accessed
+| optional | Specifies that a protocol’s property, function, or subscript isn’t required to be implemented by conforming members
+| required | Marks the initializer so that every subclass must implement it
+| weak | Indicates that the variable or property has a weak reference to the object stored as its value
 
 #### Access Control
 
 Directive | Purpose
 :---: | ---
-open | Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders
-public | Can only be subclassed by its own module or have its methods overridden by others within the same module
-internal | (Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target
-fileprivate | Indicates the entities are available only from within the source file where they are defined
-private | Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the `{ }` brackets only)
+| open | Can be subclassed outside of its own module and its methods overridden as well; truly open to modification by others and useful for framework builders
+| public | Can only be subclassed by its own module or have its methods overridden by others within the same module
+| internal | (Default) Indicates the entities are only available to the entire module that includes the definition, e.g. an app or framework target
+| fileprivate | Indicates the entities are available only from within the source file where they are defined
+| private | Indicates the entities are available only from within the declaring scope within the file where they are defined (e.g. within the `{ }` brackets only)
 
 [Back to top](#swift-3-cheat-sheet)
 
@@ -636,15 +636,15 @@ Literals are compiler directives which provide a shorthand notation for creating
 
 Syntax | What it does
 :---: | ---
-`"string"` | Returns a `String` object
-`28` | Returns an `Int`
-`3.14`, `0xFp2`, `1.25e2` | Returns a `Float` object
-`true`, `false` | Returns a `Bool` object
-`[]` | Returns an `Array` object
-`[keyName:value]` | Returns a `Dictionary` object
-`0b` | Returns a binary digit
-`0o` | Returns an octal digit
-`0x` | Returns a hexadecimal digit
+| `"string"` | Returns a `String` object
+| `28` | Returns an `Int`
+| `3.14`, `0xFp2`, `1.25e2` | Returns a `Float` object
+| `true`, `false` | Returns a `Bool` object
+| `[]` | Returns an `Array` object
+| `[keyName:value]` | Returns a `Dictionary` object
+| `0b` | Returns a binary digit
+| `0o` | Returns an octal digit
+| `0x` | Returns a hexadecimal digit
 
 #### Strings
 
