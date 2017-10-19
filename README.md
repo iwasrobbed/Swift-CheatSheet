@@ -1,6 +1,6 @@
 ## Swift 3+ Cheat Sheet
 
-Want to help improve this? File an issue or open a pull request! :) 
+Want to help improve this? File an issue or open a pull request! :)
 
 This is not meant to be a beginner's guide or a detailed discussion about Swift; it is meant to be a quick reference to common, high level topics.
 
@@ -242,15 +242,15 @@ An example for posterity:
 ```swift
 struct Options: OptionSet {
     let rawValue: Int
-    
+
     init(rawValue: Int) {
         self.rawValue = rawValue
     }
-    
+
     init(number: Int) {
         self.init(rawValue: 1 << number)
     }
-    
+
     static let OptionOne = Options(number: 0)
     static let OptionTwo = Options(number: 1)
     static let OptionThree = Options(number: 2)
@@ -474,7 +474,7 @@ Examples:
 ```swift
 struct Vector2D: CustomStringConvertible {
     var x = 0.0, y = 0.0
-    
+
     var description: String {
         return "Vector2D(x: \(x), y: \(y))"
     }
@@ -1072,21 +1072,21 @@ class SomeClass {
         someMethod { (value) in // Retained self
             self.currentValue = value
         }
-        
+
         someMethod { [unowned self] (value) in // Not retained, but expected to exist
             self.currentValue = value
-            
+
         }
-        
+
         someMethod { [weak self] value in // Not retained, not expected to exist
             // Or, alternatively you could do
             guard let sSelf = self else { return }
-            
+
             // Or, alternatively use `self?` without the guard
             sSelf.currentValue = value
         }
     }
-    
+
     func someMethod(closure: SomeClosureType) {
         closure("Hai")
     }
@@ -1130,6 +1130,30 @@ Example:
 ```swift
 func stringForTrueOrFalse(trueOrFalse: Bool) -> String {
     return trueOrFalse ? "True" : "False"
+}
+```
+
+#### Nil Coalescing Operators
+
+In Swift, we need to consider the use of `optional` values. One very basic way to handle `nil` cases is with an `if-else` statement:
+
+```swift
+func stringForOptionalExistence(optionalValue: String?) -> String {
+  if optionalValue != nil {
+    return optionalValue
+  } else {
+    return "Empty"
+  }
+}
+```
+
+In this particular case, we are returning `optionalValue` if it is not `nil`, and `"Empty"` if `optionalValue` is `nil`. The shorthand notation for this type of `if(!=nil)-else` statement is a nil coalescing operator of the form: `optionalValue ?? nonOptionalValue`
+
+Example:
+
+```swift
+func stringForOptionalExistence(optionalValue: String?) -> String {
+  return optionalValue ?? "Empty"
 }
 ```
 
@@ -1274,17 +1298,17 @@ To turn a class into a singleton, you use the following implementation where the
 class MyClass {
 
     // MARK: - Instantiation
-    
+
     // Naming convention:
     // sharedInstance, sharedManager, sharedController, etc.
     // depending on the class type
     static let sharedInstance = MyClass()
-   
+
     // This prevents others from using the default '()' initializer for this class.
     fileprivate init() {}
-    
+
     var isReady = true
-    
+
     // More class code here
 }
 ```
