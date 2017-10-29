@@ -60,6 +60,8 @@ func doWork() {
 */
 ```
 
+### MARK
+
 Using `MARK` to organize your code:
 
 ```swift
@@ -71,6 +73,30 @@ Using `MARK` to organize your code:
 
 // Declare some more functions or variables here
 ```
+
+### FIXME
+
+Using `FIXME` to remember to fix your code:
+
+```swift
+// Some broken code might be here
+
+// FIXME: Use fixme to create a reminder to fix broken code later
+```
+
+`FIXME` works a lot like `MARK` because it makes organizing code easier, but it's used exclusively when you need to remember to fix something.
+
+### TODO
+
+Using `TODO` to remember to add, delete, or generally refactor your code:
+
+````swift
+// Some incomplete code might be here
+
+// TODO: Use todo to create a reminder to finish things up later
+````
+
+`TODO` is very similar to `FIXME` and `MARK`, but it's used exclusively when you need to remember to add, delete, or change your code later.
 
 **Auto-generating method documentation:**
 In a method's preceding line, press `⌥ Option + ⌘ Command + /` to automatically generate a documentation stub for your method.
